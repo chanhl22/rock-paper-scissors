@@ -31,6 +31,8 @@ new Vue({
                     || (this.comChoice === 'paper' && this.myChoice === 'rock')) {
                     this.myLife--;
                     this.winner = 'COMPUTER';
+                } else {
+                    this.winner = 'NO';
                 }
                 this.count = 3;
                 this.isClick = true;
@@ -39,6 +41,36 @@ new Vue({
                     winner: this.winner
                 }
                 this.logList.unshift(log);
+            }
+        },
+        myLife: function (newVal) {
+            if (newVal == 0) {
+                setTimeout(() => {
+                    confirm("패배");
+                    this.myChoice = null;
+                    this.comChoice = null;
+                    this.count = 3;
+                    this.myLife = 3;
+                    this.comLife = 3;
+                    this.isClick = true;
+                    this.winner = null;
+                    logList = [];
+                }, 500)
+            }
+        },
+        comLife: function (newVal) {
+            if (newVal == 0) {
+                setTimeout(() => {
+                    confirm("승리");
+                    this.myChoice = null;
+                    this.comChoice = null;
+                    this.count = 3;
+                    this.myLife = 3;
+                    this.comLife = 3;
+                    this.isClick = true;
+                    this.winner = null;
+                    logList = [];
+                }, 500)
             }
         }
     },
